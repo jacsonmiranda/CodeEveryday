@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <input type="button" onClick="start()" value="Start Game">
+    <script>
+        var arr = ["JavaScript", "html", "css", "website"];
+        var output = document.getElementById("output");
+
+        function start() {
+            shuffleArray(arr);
+            output.innerHTML += arr + "<br>";
+        }
+
+        function shuffleArray(arr) {
+            for (var i = arr.length - 1; i > 0; i--) {
+                var holder = Math.floor(Math.random()*(i+1));
+                var temp = arr[i];
+                arr[i] = arr[holder];
+                arr[holder] = temp;
+            }
+            return arr;    
+        }
+    </script>
+</body>
+
+</html>
