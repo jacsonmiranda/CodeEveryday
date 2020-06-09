@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div>
+	<div id="wrapper">
+	</div>
+</div>
+</body>
+<script>
+	var output = document.getElementById("wrapper");
+
+	console.log(window);
+
+	for (var prop in window) {
+		document.write(prop + " " + window[prop] + "<br>");
+	}
+
+	output.innerHTML += window.innerHeight + " " + window.innerWidth + "<br>";
+
+	output.innerHTML += window.location + "<br>";
+
+	var j = window.open("index2.html");
+	j.onbeforeunload = function(){
+		alert("stop now");
+	}
+</script>
+
+</html>
