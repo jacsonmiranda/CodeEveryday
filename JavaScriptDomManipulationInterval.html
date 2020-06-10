@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+ 
+<body>
+    <div id="wrapper">Page 1</div> 
+    <a href="index3.html">Index3</a> 
+    <a href="index.html">Index</a> 
+    <a href="index2.html">Index2</a>
+    <input type="button" onclick="startInt()" value="Start">
+    <input type="button" onclick="clearInt()" value="Start">
+    <script>
+        var output = document.getElementById('wrapper');
+ 		
+        var myTimer;
+        var myTimer2;
+        function startInt(){
+        	
+        	myTimer = window.setTimeout(myPopup, 1000);
+        	myTimer2 = window.setTimeout(alterPageName, 3000);
+        }
+
+        function clearInt() {
+            window.clearInterval(myTimer);
+        }
+
+        function alterPageName(){
+        	output.innerHTML = "alteredName";
+        }
+
+        function myPopup(){
+        	alert("Hello");
+        }
+
+    </script>
+</body>
+ 
+</html>
