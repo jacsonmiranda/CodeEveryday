@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="wrapper">Page 1</div> 
+<img id="imgSwap" onmouseover="cImg(this)" onmouseout="bImg(this)">
+<img id="imgSwap" onmouseover="cImg(this)" onmouseout="bImg(this)">
+<script>
+  var imgHolder = "http://via.placeholder.com/350x150/ffff00/fff?text=Image10";
+  document.getElementById('imgSwap').onclick = function() {
+    message("clicked");
+  }
+  window.onload = function() {
+    document.getElementById('imgSwap').src = imgHolder;
+  }
+
+  function cImg(t) {
+    message(t.src);
+    imgHolder = t.src;
+    t.src = "http://via.placeholder.com/350x150/ff0000/fff?text=Image2";
+  }
+
+  function bImg(t) {
+    t.src = imgHolder;
+  }
+
+  function message(m) {
+    document.getElementById('wrapper').innerHTML = m;
+  }
+</script>
+</body>
+</html>
