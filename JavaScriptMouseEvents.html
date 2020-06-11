@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="wrapper">Page 1</div> 
+<img id="imgSwap" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)">
+<script>
+  var img = "http://via.placeholder.com/350x150/ffbf04/fff?text=Image10";
+  var click = "http://via.placeholder.com/350x150/afff02/fff?text=Image1";
+  var dbclick = "http://via.placeholder.com/350x150/bfff03/fff?text=Image2";
+  var over = "http://via.placeholder.com/350x150/ffff00/fbf?text=Image3";
+  var out = "http://via.placeholder.com/350x150/ffff00/faf?text=Image4";
+ 
+  window.onload = function() {
+    document.getElementById('imgSwap').src = img;
+  }
+
+  document.getElementById('imgSwap').onclick = function() {
+    message("clicked");
+    swp(click);
+  }
+
+  document.getElementById('imgSwap').ondblclick = function() {
+    message("double click");
+    swp(dbclick);
+  }
+
+  function onMouseOver(j) {
+    message(over);
+    //over = t.src;
+    j.src = over;
+  }
+
+  function onMouseOut(j) {
+    message(out);
+    j.src = out;
+  }
+
+  function swp(j) {
+    document.getElementById('imgSwap').src = j;
+  }
+
+  function message(m) {
+    document.getElementById('wrapper').innerHTML = m;
+  }
+</script>
+</body>
+</html>
