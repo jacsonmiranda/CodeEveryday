@@ -12,7 +12,7 @@
         }
         .box{
             height:100px;
-            width:100px;  
+            width:100px; 
             text-align:center;
             border:1px solid black;
             display:inline-block;
@@ -35,14 +35,13 @@
             myArray.sort(function (a,b){
                 return 0.5 - Math.random()
             });
-            console.log(myArray);
             build();
             findPerson();
         }
         
         function findPerson(){
             key = myArray[Math.floor(Math.random()*myArray.length)];
-            message1("Find this name "+key);
+            message1("Find the name "+key);
         }
         
         
@@ -64,18 +63,25 @@
         
         function eEle(t,s){
             if(s==key){
-                message("Correct");
-                myArray.pop(s);
+                var j = myArray.indexOf(s);
+                message2("Correct");
+                myArray.splice(j,1);
+                t.parentNode.removeChild(t);
 
+                findPerson();
             }else{
-                message("Wrong");
+                message2("Wrong");
             }
             
+            if(myArray.length <= 0){
+                message1("The game ended!");
+            }   
         }
         
         function message1(message){
             document.getElementById('message1').innerHTML = message;
         }
+
         function message2(message){
             document.getElementById('message2').innerHTML = message;
         }      
