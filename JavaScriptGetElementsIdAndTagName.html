@@ -1,0 +1,39 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <form name="myForm">
+        <div id="output"></div>
+        <input type="url" id="url" name="url">
+        <input type="text" id="first" name="first">
+        <input type="text" id="last" name="last">
+        <textarea name="output1"></textarea>
+        <div id="another">Parent
+            <div id="one">Test 1</div>
+            <div id="two">Test 2</div>
+            <div id="three">Test 3</div>
+            <div id="four">Test 4</div>
+            <div id="five">Test 5</div>
+            <div id="six">Test 6</div>
+        </div>
+        <input type="button" id="btn1" onclick="myFunc()" value="Click Here">
+    </form>
+    <script>
+        var output = document.getElementById("output");
+        var divList = document.getElementsByTagName("div");
+        divList[7].innerHTML = "Welcome to my website";
+
+        function myFunc() {
+            var html = "<h1>Div list</h1>";
+            for(var j=1; j<divList.length; j++){
+                if(!divList[j].firstElementChild)
+                html += divList[j].innerText + "<br>";
+            }
+            divList[0].innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
