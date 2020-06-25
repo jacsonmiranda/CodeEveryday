@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <style>
+        .highlight{
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="myForm">
+        <div id="output"></div>
+        <input type="url" id="url" name="url" class="highlight">
+        <input type="text" id="first" name="first">
+        <input type="text" id="last" name="last" class="highlight">
+        <textarea name="output1"></textarea>
+        <div id="another">Parent
+            <div id="one" class="highlight">Test 1</div>
+            <div id="two">Test 2</div>
+            <div id="three">Test 3</div>
+            <div id="four" class="highlight">Test 4</div>
+            <div id="five">Test 5</div>
+            <div id="six">Test 6</div>
+        </div>
+        <input type="button" id="btn1" onclick="myFunc()" value="Click Here">
+    </form>
+    <script>
+        var output = document.getElementById("output");
+        var highlightList = document.getElementsByClassName("highlight");
+
+        function myFunc() {
+            var html = "<h1>highlight list</h1>";
+            for(var j=0; j<highlightList.length; j++){
+                if(highlightList[j].innerText){            
+                    html += highlightList[j].innerText + "<br>";
+                }else if(highlightList[j].value){
+                    html += highlightList[j].value + "<br>";
+                }
+            }
+            document.getElementById("output").innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
