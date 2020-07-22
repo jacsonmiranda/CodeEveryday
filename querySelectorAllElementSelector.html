@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <style>
+        #pickme .output{
+            background-color: aqua;
+        }
+        input[name="last"]{
+          background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="message">Message</div>
+    <div class="output">Test Me 1</div>
+    <div class="output">Test Me 2</div>
+    <div id="pickme">
+      <div class="output highlight">Test Me 3</div>
+    </div>
+    <input type="text" name="query" id="queryS">
+    <input type="button" onclick="mySel()" value="Get query">
+    <div id="pickme">
+      <div class="output">Test Me 4</div>
+      <div class="output">Test Me 5</div>
+      <div class="output">Test Me 6</div>
+    </div>
+    <div class="output highlight">Test Me 7</div>
+    <div class="output">Test Me 8</div>
+    <div class="output">Test Me 9</div>
+    <div class="output">Test Me 10</div>
+    <script>
+
+        function mySel(){
+          var a = document.getElementById('queryS').value;
+            var el = qs("."+a);
+            console.log(el.length);
+            var html = "Results<br>";
+            for (var x = 0; x < el.length; x++) {
+                html += el[x].innerHTML + "<br>";
+            }
+            document.getElementById('message').innerHTML = html;
+        }
+
+        function qs(el) {
+            return document.querySelectorAll(el);
+        }
+    </script>
+</body>
+
+</html>
