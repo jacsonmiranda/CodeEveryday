@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <style>
+        #overlay{
+          visibility: hidden;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 50px;
+          margin-left: auto;
+          margin-right: auto;
+          width: 400px;
+          height: 400px;
+          background-color: #ddd;
+          border: 1px solid black;
+          z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" id="oLay" onclick="show()" value="Pop up Window">
+    <div id="message">Message</div>
+    <div class="output">Test Me 1</div>
+    <div class="output">Test Me 2</div>
+    <div class="output">Test Me 3</div>
+    <input type="text" name="query" id="queryS"><br>
+    <div id="overlay">
+      <div>
+        <p> Some contentSome contentSome contentSome contentSome contentSome contentSome contentSome 
+          contentSome contentSome contentSome contentSome contentSome contentSome contentSome contentSome 
+          contentSome contentSome contentSome contentSome contentSome contentSome  contentSome 
+          contentSome contentSome contentSome contentSome contentSome contentSome contentSome content</p>
+      </div>
+    </div>
+    <script>
+      document.getElementById('oLay').onclick = function(){
+        var j = document.getElementById('overlay');
+        j.style.visibility = (j.style.visibility == "hidden") ? "visible" : "hidden";
+      }
+
+    </script>
+</body>
+
+</html>
