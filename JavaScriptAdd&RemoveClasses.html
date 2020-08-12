@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <style>
+        .box1{
+          background-color: aqua;
+          font-size: 1.5em;
+          color: #fff;
+        }
+        .box2{
+          background-color: red;
+          font-size: 0.5em;
+          color: #ddd;
+        }
+        #one, #two, #three{
+          width: 100px;
+          height: 100px;
+          display: inline-block;
+          border: 1px solid black;          
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one" class="myClass">Box one</div>
+    <div id="two" class="myClass">Box two</div>
+    <div id="three" class="myClass">Box three</div>
+    <script>
+      var j = document.querySelectorAll('.myClass');
+      for(var a=0;a<j.length;a++){
+        j[a].onclick = function(){
+          console.log(this);
+        }
+      }
+    </script>
+</body>
+
+</html>
