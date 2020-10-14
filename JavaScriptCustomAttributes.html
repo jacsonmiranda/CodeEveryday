@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        td{
+            border:1px solid blue;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div id="output"></div>
+
+    <script>
+        var myArray = ["Jacson", "Bia", "Amanda", "Peter", "Shana"];
+        var i = document.getElementById('message');
+        window.onload = build();
+       
+        function build(){
+            var html = "<h1>Table of friends</h1><table>";
+            for(i = 0; i < myArray.length; i++){
+                html += "<tr data-row="+i+" data-vote='0'><td class='box'>"+(i+1)+"</td><td>" +myArray[i] + "</td><td>0</td></tr>";
+            }
+            html += "</table>";
+            document.getElementById('output').innerHTML = html;
+            var b = document.getElementsByClassName('box');
+            var j;
+            for(i=0;i<b.length;i++){
+                b[i].onclick = function(){
+                    var a = this.parentElement.getAttribute('data-row')
+                    j = this.parentElement.getAttribute('data-vote')
+                    j++;
+                    this.parentElement.lastElementChild.innerText = j;
+                    this.parentElement.setAttribute("data-vote",j);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
