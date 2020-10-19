@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Shopping List</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>JavaScrip</div>
+    <div>
+        <input type="text" id="addItem">
+        <input type="button" id="addNew" value="Add Item"> </div>
+        <h1>Shopping List</h1>
+        <ol id="list">
+            <li>Banana</li>
+        </ol>
+    <script>
+        //window.onload = build;
+        var myArray = [];
+        var message = document.getElementById('message');
+        var addNew = document.getElementById('addNew');
+        addNew.onclick = function () {
+            var q = document.getElementById('addItem').value;
+            var li = document.createElement('li');
+            li.innerHTML = q;
+            var list = document.querySelector("#list");
+            list.appendChild(li);
+        }
+    </script>
+</body>
+
+</html>
