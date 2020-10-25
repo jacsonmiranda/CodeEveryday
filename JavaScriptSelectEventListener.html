@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="message">Complete JavaScrip Course</div>
+    <div id="output"></div>
+    <input type="text" value="This is some dummy text Complete JS Course" id="myT">
+
+    <script>
+        document.getElementById('myT').addEventListener('select', myFun);
+        var o = document.getElementById('output');
+
+        function myFun(){
+            var e = event.target;
+            var str = event.target.value;
+            var result = str.substring(e.selectionStart, e.selectionEnd);
+            o.innerHTML = result;
+        }
+
+    </script>
+</body>
+</html>
