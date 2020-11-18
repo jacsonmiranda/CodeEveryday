@@ -18,6 +18,11 @@
         
         .gameTile {
             display: inline-block;
+            padding: 3px;
+        }
+        
+        .flipImage {
+            max-width: 100px;
         }
     </style>
 </head>
@@ -33,6 +38,9 @@
     <script>
         var playLockout = false;
         var gamePlay = false;
+        var tileImages = []
+            , tileArray = []
+            , tileFlippedOver = [];
         var sb = document.getElementById('start');
         var message = document.getElementById('message');
         var score = document.getElementById('score');
@@ -41,13 +49,42 @@
 
         function startGame() {
             // hide start button
-            message.innerHTML = "Its working" + gamePlay;
+            sb.style.display = 'none';
+            //message.innerHTML = "Its working" + gamePlay;
             if (!gamePlay) {
                 gamePlay = true;
-                // build array for tiles
-                // shuffle tiles
-                // buildboard
+                buildArray();
+                tileArray = tileImages.concat(tileImages);
+                shuffleArray(tileArray);
+                buildBoard();
             }
+        }
+
+        function buildBoard() {
+            var html = "";
+            var x = 0;
+            tileArray.forEach(function (ele) {
+                x++;
+                html += '<div class="gameTile">';
+                html += '<img id="cardz' + x + '" src="http://via.placeholder.com/250/000000/ffffff?text=click" onclick="pickCard(' + x + ',this)" class="flipImage"></div>';
+            });
+            gameBoard.innerHTML = html;
+        }
+
+        function buildArray() {
+            for (var x = 1; x < 7; x++) {
+                tileImages.push(x + '.jpg');
+            }
+        }
+
+        function shuffleArray(array) {
+            for (var x = array.length - 1; x > 0; x--) {
+                var holder = Math.floor(Math.random() * (x + 1));
+                var itemValue = array[x];
+                array[x] = array[holder];
+                array[holder] = itemValue;
+            }
+            return array;
         }
     </script>
 </body>
