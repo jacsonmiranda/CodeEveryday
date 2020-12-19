@@ -6,7 +6,7 @@
         .item {
             border: 1px solid black;
             padding: 2%;
-            width: 22%;
+            width: 20%;
             float: left;
             height: 220px;
         }
@@ -26,6 +26,10 @@
             display: inline-block;
         }
 
+        .remove{
+            background-color: red;
+        }
+
         td{
             text-align: center;
             border: 1px solid #ddd;
@@ -36,6 +40,14 @@
             border: 1px solid #ddd;
             text-align: center;
             font-size: 1.3em;
+        }
+        #output{
+            width: 70%;
+            float: left;
+        }
+        #output2{
+            width: 30%;
+            float: right;
         }
     </style>
 </head>
@@ -99,7 +111,10 @@
                     iteminchart = true;
                 }
             });
-            shopcart.push(iteminfo);
+            if(!iteminchart){
+                shopcart.push(iteminfo);
+            }
+
             localStorage.setItem('jac', JSON.stringify(shopcart));
             outputCart();
         }
@@ -122,11 +137,22 @@
         function buildItems() {
             var x = 0;
             items.forEach(function (v) {
-                html += '<div class="item"><h3>' + v.name + '</h3><img src="http://placehold.it/350x150" class="img-fluid"><div>' + v.details + ' <br><a href="#" class="productItem" data-name="' + v.name + '" data-s="' + v.details + '"  data-price="' + v.cost + '" data-id="' + x + '" >Add to Cart</a></div></div>';
+                html += '<div class="item"><h3>' + v.name + '</h3><img src="http://placehold.it/350x150" class="img-fluid"><div>' + v.details + ' <br><a href="#" class="productItem" data-name="' + v.name + '" data-s="' + v.details + '"  data-price="' + v.cost + '" data-id="' + x + '" >Add to Cart</a></div>'+fMoney(v.cost)+'</div>';
                 x++;
                 console.log(v);
             })
             document.getElementById('output').innerHTML += html;
+        }
+
+        function remove(j){
+            for(var x=0;x<shopcart.length;x++){
+                if(shopcart[x].id == j){
+                    var rem = shopcart.splice(x,1);
+                    console.log(rem);
+                }
+            }
+            localStorage.setItem('jac',JSON.stringify(shopcart));
+            outputCart();
         }
 
         function fMoney(n){
