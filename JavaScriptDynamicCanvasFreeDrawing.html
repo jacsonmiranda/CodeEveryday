@@ -13,6 +13,9 @@
     <div id="output">Complete JavaScript Course </div>
     <canvas id="canvas"></canvas>
     <input type="color" id="bgColor">
+    <input type="button" id="save" value="save">
+    <input type="button" id="clear" value="clear">
+    <br> <img src="" width="300" height="200" id="holder">
     <script>
         var canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
@@ -21,13 +24,21 @@
         canvas.height = 700;
         window.onload = init;
         var pos = {
-            x: 8
-            , y:28
+            x: 0
+            , y: 0
         };
-        var bgColor = "red";
+        var bgColor = "black";
         var bgC = document.getElementById('bgColor');
         bgC.addEventListener('change', function () {
             bgColor = event.target.value;
+        })
+        document.getElementById('save').addEventListener('click', function () {
+            var dataURL = canvas.toDataURL();
+            console.log(dataURL);
+            document.getElementById('holder').src = dataURL;
+        })
+        document.getElementById('clear').addEventListener('click', function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
         })
 
         function init() {
@@ -44,7 +55,7 @@
             sPos(e);
             ctx.lineTo((pos.x -8), (pos.y-26));
             ctx.strokeStyle = bgColor;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 10;
             ctx.lineCap = 'round';
             ctx.stroke();
         }
