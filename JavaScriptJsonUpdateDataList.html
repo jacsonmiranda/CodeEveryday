@@ -33,12 +33,13 @@
         addGuest.addEventListener('click', function (e) {
             var g = document.getElementById('guestName');
             var n = document.getElementById('guestNum');
-            message('V ', g.value + ' +' + n.value, party.length, '');
+            message('✗', g.value + ' +' + n.value, party.length, '');
             party.push({
                 name: g.value
                 , guests: Number(n.value)
                 , status: false
             })
+            localStorage.setItem('p4', JSON.stringify(party));
             g.value = "";
             n.value = 0;
         })
@@ -46,20 +47,25 @@
             el = e.target;
             var ds = el.dataset;
             el.classList.toggle('active');
-            el.children[0].innerHTML = el.children[0].innerHTML == 'V ' ? 'X ' : 'V ';
+            el.children[0].innerHTML = el.children[0].innerHTML == '✓'?'✗':'✓';
             party[ds.id].status = party[ds.id].status ? false : true;
-            console.log(party);
+            localStorage.setItem('p4', JSON.stringify(party));
         })
 
         function buildList() {
-            party = JSON.parse(data);
+            if (localStorage.getItem('p4')) {
+                party = JSON.parse(localStorage.getItem('p4'))
+            }
+            else {
+                party = JSON.parse(data);
+            }
             for (var x = 0; x < party.length; x++) {
                 var person = party[x].name + ' +' + party[x].guest;
                 if (party[x].status) {
-                    message('V ', person, x, 'active');
+                    message('✓', person, x, 'active');
                 }
                 else {
-                    message('X ', person, x, '');
+                    message('✗', person, x, '');
                 }
             }
         }
