@@ -1,0 +1,70 @@
+<html>
+ 
+<head>
+  <title>CSV file exporter</title>
+</head>
+ 
+<body>
+  <script>
+    const btn = document.createElement('button');
+    btn.innerHTML = "click me";
+    document.body.prepend(btn);
+    const btn1 = document.createElement('button');
+    btn1.innerHTML = "download CSV";
+    btn1.style.backgroundColor = 'green';
+    btn1.style.color = 'white';
+    btn1.style.padding = '10px';
+    document.body.prepend(btn1);
+    const arr1 = [1, 2, 3, 4];
+    const arr2 = [[1, 2, 3], ['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']];
+    //console.log(arr1);
+    //console.log(arr2);
+    btn1.addEventListener('click', createCSV);
+ 
+    function clean(row) {
+      let rep = "";
+      row.forEach((cell, index) => {
+        cell = cell == null ? "" : cell.toString();
+        if (cell.search(/("|,|\n)/g) >= 0) {
+          cell = '"' + cell + '"';
+        }
+        if (index > 0) {
+          rep += ",";
+        }
+        rep += cell;
+      })
+      return rep;
+    }
+ 
+    function createCSV(data) {
+      let file;
+      let holder = "";
+      let filename = "test.csv";
+      let properties = {
+        type: "text/csv;charset=utf-8;"
+      };
+      arr2.forEach((item) => {
+        holder += clean(item) + "\n";
+      })
+      file = new File([holder], filename, properties);
+      let link = document.createElement('a');
+      let url = window.URL.createObjectURL(file);
+      link.setAttribute('href', url);
+      link.setAttribute('download', filename);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    btn.addEventListener('click', () => {
+      arr2.forEach((first) => {
+        console.log(first);
+        first.forEach((sec) => {
+          console.log(sec);
+        })
+      })
+    })
+  </script>
+</body>
+ 
+</html>
